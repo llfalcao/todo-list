@@ -116,7 +116,87 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_app_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/app.scss */ \"./src/styles/app.scss\");\n\r\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_app_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/app.scss */ \"./src/styles/app.scss\");\n/* harmony import */ var _models_Project__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./models/Project */ \"./src/models/Project/index.js\");\n/* harmony import */ var _models_Todo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./models/Todo */ \"./src/models/Todo/index.js\");\n/* harmony import */ var _views_TodoList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/TodoList */ \"./src/views/TodoList/index.js\");\n/* harmony import */ var _views_ProjectList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/ProjectList */ \"./src/views/ProjectList/index.js\");\n\r\n\r\n\r\n\r\n\r\n\r\nconst DOMElements = (() => {\r\n  const body = document.querySelector('body');\r\n  const projects = document.querySelector('#projects');\r\n  const todoList = document.querySelector('#todo');\r\n\r\n  return { body, projects, todoList };\r\n})();\r\n\r\nlet projects = [];\r\nconst defaultProject = (0,_models_Project__WEBPACK_IMPORTED_MODULE_1__[\"default\"])('Untitled');\r\n\r\nconst title1 = (0,_models_Todo__WEBPACK_IMPORTED_MODULE_2__[\"default\"])('Title 1', 'Description 1', '22/09/2021', 'normal', '', []);\r\ndefaultProject.addItem(title1.getInfo());\r\n\r\nconst title2 = (0,_models_Todo__WEBPACK_IMPORTED_MODULE_2__[\"default\"])('Title 2', 'Description 2', '31/10/2021', 'normal', '', []);\r\ndefaultProject.addItem(title2.getInfo());\r\n\r\nprojects.push(defaultProject.getProjectInfo());\r\nconsole.log(projects[0]);\r\nDOMElements.todoList.insertAdjacentHTML('beforeend', (0,_views_TodoList__WEBPACK_IMPORTED_MODULE_3__[\"default\"])(projects[0]));\r\nDOMElements.projects.insertAdjacentHTML('afterbegin', (0,_views_ProjectList__WEBPACK_IMPORTED_MODULE_4__[\"default\"])(projects));\r\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/models/Project/Project.js":
+/*!***************************************!*\
+  !*** ./src/models/Project/Project.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction Project(title) {\r\n  let _title = title;\r\n  let _items = [];\r\n\r\n  const getProjectInfo = () => {\r\n    return { title: _title, items: _items };\r\n  };\r\n  const getItems = () => _items;\r\n  const addItem = (item) => _items.push(item);\r\n\r\n  return { getProjectInfo, getItems, addItem };\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Project);\r\n\n\n//# sourceURL=webpack://todo-list/./src/models/Project/Project.js?");
+
+/***/ }),
+
+/***/ "./src/models/Project/index.js":
+/*!*************************************!*\
+  !*** ./src/models/Project/index.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _Project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Project */ \"./src/models/Project/Project.js\");\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Project__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\r\n\n\n//# sourceURL=webpack://todo-list/./src/models/Project/index.js?");
+
+/***/ }),
+
+/***/ "./src/models/Todo/Todo.js":
+/*!*********************************!*\
+  !*** ./src/models/Todo/Todo.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst Todo = (title, description, dueDate, priority, notes, checklist) => {\r\n  let _title = title;\r\n  let _description = description;\r\n  let _dueDate = dueDate;\r\n  let _priority = priority;\r\n  let _notes = notes;\r\n  let _checklist = checklist;\r\n\r\n  const getInfo = () => {\r\n    return {\r\n      title: _title,\r\n      description: _description,\r\n      dueDate: _dueDate,\r\n      priority: _priority,\r\n      notes: _notes,\r\n      checklist: _checklist,\r\n    };\r\n  };\r\n\r\n  return { getInfo };\r\n};\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Todo);\r\n\n\n//# sourceURL=webpack://todo-list/./src/models/Todo/Todo.js?");
+
+/***/ }),
+
+/***/ "./src/models/Todo/index.js":
+/*!**********************************!*\
+  !*** ./src/models/Todo/index.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _Todo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Todo */ \"./src/models/Todo/Todo.js\");\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Todo__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\r\n\n\n//# sourceURL=webpack://todo-list/./src/models/Todo/index.js?");
+
+/***/ }),
+
+/***/ "./src/views/ProjectList/ProjectList.js":
+/*!**********************************************!*\
+  !*** ./src/views/ProjectList/ProjectList.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst ProjectList = function (projects) {\r\n  let projectList = '';\r\n  for (let i in projects) {\r\n    projectList += `<div class=\"project-item\">${projects[i].title}</div>`;\r\n  }\r\n\r\n  const content = `\r\n    <h2>Projects</h2>\r\n    ${projectList}\r\n  `;\r\n\r\n  return content;\r\n};\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProjectList);\r\n\n\n//# sourceURL=webpack://todo-list/./src/views/ProjectList/ProjectList.js?");
+
+/***/ }),
+
+/***/ "./src/views/ProjectList/index.js":
+/*!****************************************!*\
+  !*** ./src/views/ProjectList/index.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _ProjectList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProjectList */ \"./src/views/ProjectList/ProjectList.js\");\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ProjectList__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\r\n\n\n//# sourceURL=webpack://todo-list/./src/views/ProjectList/index.js?");
+
+/***/ }),
+
+/***/ "./src/views/TodoList/TodoList.js":
+/*!****************************************!*\
+  !*** ./src/views/TodoList/TodoList.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst TodoList = function (project) {\r\n  let listContainer = '';\r\n  for (let i in project.items) {\r\n    listContainer += objectToText(project.items[i]);\r\n  }\r\n\r\n  const content = `\r\n    <main class=\"container\">\r\n      <h1>${project.title}</h1>\r\n      ${listContainer}\r\n    </main>\r\n  `;\r\n\r\n  return content;\r\n};\r\n\r\nfunction objectToText(item) {\r\n  return `\r\n    <div class=\"list-item\">\r\n      <span>${item.title}</span>\r\n      <span>${item.dueDate}</span>\r\n    </div>\r\n  `;\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TodoList);\r\n\n\n//# sourceURL=webpack://todo-list/./src/views/TodoList/TodoList.js?");
+
+/***/ }),
+
+/***/ "./src/views/TodoList/index.js":
+/*!*************************************!*\
+  !*** ./src/views/TodoList/index.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _TodoList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TodoList */ \"./src/views/TodoList/TodoList.js\");\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_TodoList__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\r\n\n\n//# sourceURL=webpack://todo-list/./src/views/TodoList/index.js?");
 
 /***/ })
 
