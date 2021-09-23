@@ -1,0 +1,66 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  background-color: $dark;
+  padding: 2rem 1rem;
+  width: 90%;
+  height: 90%;
+  overflow-y: scroll;
+
+  & p {
+    margin-bottom: 0.5rem;
+  }
+
+  & .form-item {
+    display: block;
+
+    & label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    & input {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+    }
+
+    & textarea {
+      width: 100%;
+      max-width: 100%;
+      height: 100px;
+      margin-bottom: 1rem;
+    }
+
+    & button {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  & .radio-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    & .radio-item {
+      display: flex;
+      align-items: center;
+      line-height: 1.8;
+
+      & input {
+        margin-top: 0.65rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}

@@ -9,7 +9,7 @@ const TodoList = function (project) {
     <div class="list-container">
       ${listContainer}
     </div>
-    <button type="button" class="btn">New Item</button>
+    <button type="button" id="btn-new-todo" class="btn">New Item</button>
   `;
 
   return content;

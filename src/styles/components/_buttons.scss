@@ -1,7 +1,4 @@
 .btn {
-  position: absolute;
-  right: 2rem;
-  top: 2rem;
   font-family: $font-system;
   font-size: 0.8rem;
   padding: 0.4rem 1rem;
@@ -15,4 +12,10 @@
     color: $light;
     border: 1px solid $light;
   }
+}
+
+#btn-new-todo {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
 }

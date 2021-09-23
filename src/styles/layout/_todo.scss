@@ -38,15 +38,15 @@
     }
 
     & .low-priority {
-      background-color: $priority-low;
+      background-color: $low-priority;
     }
 
     & .normal-priority {
-      background-color: $priority-normal;
+      background-color: $normal-priority;
     }
 
-    & .urgent-priority {
-      background-color: $priority-urgent;
+    & .high-priority {
+      background-color: $high-priority;
     }
   }
 }

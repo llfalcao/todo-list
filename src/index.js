@@ -3,14 +3,16 @@ import Project from './models/Project';
 import Todo from './models/Todo';
 import TodoList from './views/TodoList';
 import ProjectList from './views/ProjectList';
+import Form from './components/Form';
 
 const DOMElements = (() => {
   const projects = () => document.querySelector('#projects');
   const todoList = () => document.querySelector('#todo');
   const firstProject = () =>
     document.querySelector('.project-item', ':first-child');
+  const newTodoBtn = () => document.querySelector('#btn-new-todo');
 
-  return { projects, todoList, firstProject };
+  return { projects, todoList, firstProject, newTodoBtn };
 })();
 
 let projects = [];
@@ -42,7 +44,7 @@ const title3 = Todo(
   'Find that old song',
   'Description 2',
   '18/11/2021',
-  'urgent',
+  'high',
   '',
   []
 );
@@ -54,5 +56,12 @@ projects.push(work.getProjectInfo());
 
 DOMElements.projects().insertAdjacentHTML('afterbegin', ProjectList(projects));
 DOMElements.firstProject().classList.add('project-list--active');
-
 DOMElements.todoList().insertAdjacentHTML('beforeend', TodoList(projects[0]));
+DOMElements.newTodoBtn().addEventListener(
+  'click',
+  () => {
+    DOMElements.todoList().insertAdjacentHTML('beforeend', Form());
+  },
+  false
+);
+DOMElements.todoList().insertAdjacentHTML('beforeend', Form());
