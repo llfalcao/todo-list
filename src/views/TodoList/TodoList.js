@@ -19,7 +19,10 @@ function objectToHTML(item) {
   return `
     <div class="list-item">
       <span class="list-item--priority ${item.priority}-priority"></span>
-      <span class="list-item--title">${item.title}</span>
+      <div>
+        <span class="list-item--title">${item.title}</span>
+        <span class="list-item--description">${item.description}</span>
+      </div>
       <span class="list-item--date">${item.dueDate}</span>
     </div>
   `;
