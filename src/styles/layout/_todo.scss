@@ -1,5 +1,6 @@
 #todo {
   width: calc(100% - 300px);
+  position: relative;
 
   & h1 {
     font-weight: 400;
@@ -8,24 +9,32 @@
   }
 
   & .list-item {
-    display: block;
-    padding: 1rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
 
     & span {
       display: inline-block;
     }
 
     & .list-item--priority {
-      width: 0.9rem;
+      position: absolute;
+      left: 1rem;
+      top: 1.18rem;
+      width: 0.8rem;
       aspect-ratio: 1;
       border-radius: 100%;
-      margin-bottom: -0.1rem;
-      margin-right: 0.5rem;
     }
 
     & .list-item--title {
-      width: 75%;
+      margin: 1rem 0rem 1rem 2rem;
+    }
+
+    & .list-item--date {
+      margin: 1rem 0rem 1rem 2rem;
     }
 
     & .low-priority {

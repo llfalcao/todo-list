@@ -11,12 +11,12 @@
   & .project-item {
     display: block;
     padding: 0.8rem 1rem;
-    color: #b3b3b3;
+    color: $gray;
     transition: $fast-transition;
     font-family: $font-system;
 
     &:hover {
-      color: #fff;
+      color: $light;
     }
   }
 
