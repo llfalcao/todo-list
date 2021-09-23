@@ -1,7 +1,7 @@
 const TodoList = function (project) {
   let listContainer = '';
   for (let i in project.items) {
-    listContainer += objectToText(project.items[i]);
+    listContainer += objectToHTML(project.items[i]);
   }
 
   const content = `
@@ -14,10 +14,11 @@ const TodoList = function (project) {
   return content;
 };
 
-function objectToText(item) {
+function objectToHTML(item) {
   return `
     <div class="list-item">
-      <span>${item.title}</span>
+      <span class="list-item--priority ${item.priority}-priority"></span>
+      <span class="list-item--title">${item.title}</span>
       <span>${item.dueDate}</span>
     </div>
   `;

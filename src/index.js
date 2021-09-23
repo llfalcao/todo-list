@@ -22,7 +22,7 @@ const title1 = Todo(
   'Develop a new product',
   'Description 1',
   '22/09/2021',
-  'normal',
+  'low',
   '',
   []
 );
@@ -37,6 +37,16 @@ const title2 = Todo(
   []
 );
 defaultProject.addItem(title2.getInfo());
+
+const title3 = Todo(
+  'Find that old song',
+  'Description 2',
+  '18/11/2021',
+  'urgent',
+  '',
+  []
+);
+defaultProject.addItem(title3.getInfo());
 
 projects.push(defaultProject.getProjectInfo());
 projects.push(dev.getProjectInfo());

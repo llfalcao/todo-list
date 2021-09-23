@@ -12,8 +12,32 @@
     padding: 1rem 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-    & span:first-child {
-      width: 50%;
+    & span {
+      display: inline-block;
+    }
+
+    & .list-item--priority {
+      width: 0.9rem;
+      aspect-ratio: 1;
+      border-radius: 100%;
+      margin-bottom: -0.1rem;
+      margin-right: 0.5rem;
+    }
+
+    & .list-item--title {
+      width: 75%;
+    }
+
+    & .low-priority {
+      background-color: $priority-low;
+    }
+
+    & .normal-priority {
+      background-color: $priority-normal;
+    }
+
+    & .urgent-priority {
+      background-color: $priority-urgent;
     }
   }
 }
