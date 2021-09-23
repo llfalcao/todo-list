@@ -64,4 +64,3 @@ DOMElements.newTodoBtn().addEventListener(
   },
   false
 );
-DOMElements.todoList().insertAdjacentHTML('beforeend', Form());

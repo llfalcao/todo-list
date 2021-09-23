@@ -54,10 +54,10 @@ const Form = function () {
           <textarea id="form-item--notes" name="notes"></textarea>
         </div>
 
-        <div class="form-item">
-          <label for="form-item--checklist">Checklist</label>
+        <p>Checklist</p>
+        <div class="form-item checklist">
           <input type="text" id="form-item--checklist" name="checklist" />
-          <button type="button" id="btn-new-checklist-item" class="btn" >Add more</button>
+          <button type="button" id="btn-new-checklist-item" class="btn" >+</button>
         </div>
 
         <div class="form-item">

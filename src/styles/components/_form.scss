@@ -19,6 +19,7 @@
 
   & p {
     margin-bottom: 0.5rem;
+    font-weight: 600;
   }
 
   & .form-item {
@@ -27,19 +28,34 @@
     & label {
       display: block;
       margin-bottom: 0.5rem;
+      font-weight: 600;
     }
 
     & input {
       width: 100%;
       margin-bottom: 1rem;
       padding: 0.5rem;
+      background-color: $darkgray;
+      border: 1px solid rgba($gray, 0.2);
+      color: $light;
+      font-family: $font-system;
+      transition: $fast-transition;
+
+      &:focus {
+        border: 1px solid rgba($gray, 0.5);
+      }
     }
 
     & textarea {
-      width: 100%;
+      min-width: 100%;
       max-width: 100%;
       height: 100px;
       margin-bottom: 1rem;
+      font-family: $font-system;
+      padding: 0.5rem;
+      background-color: $darkgray;
+      border: 1px solid rgba($gray, 0.2);
+      color: $light;
     }
 
     & button {
@@ -61,6 +77,20 @@
         margin-top: 0.65rem;
         margin-right: 0.5rem;
       }
+    }
+  }
+
+  & .checklist {
+    display: flex;
+
+    & .btn {
+      height: 39px;
+      aspect-ratio: 1;
+      font-size: 2rem;
+      font-weight: 300;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
     }
   }
 }

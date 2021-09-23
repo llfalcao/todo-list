@@ -19,3 +19,7 @@ a,
 a:visited {
   color: inherit;
 }
+
+input:focus {
+  outline: none;
+}
