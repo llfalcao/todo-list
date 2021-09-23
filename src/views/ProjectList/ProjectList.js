@@ -1,7 +1,7 @@
 const ProjectList = function (projects) {
   let projectList = '';
   for (let i in projects) {
-    projectList += `<div class="project-item">${projects[i].title}</div>`;
+    projectList += `<a class="project-item" href="#">${projects[i].title}</a>`;
   }
 
   const content = `
