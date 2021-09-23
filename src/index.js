@@ -18,10 +18,24 @@ const defaultProject = Project('Untitled');
 const dev = Project('Development');
 const work = Project('Work');
 
-const title1 = Todo('Title 1', 'Description 1', '22/09/2021', 'normal', '', []);
+const title1 = Todo(
+  'Develop a new product',
+  'Description 1',
+  '22/09/2021',
+  'normal',
+  '',
+  []
+);
 defaultProject.addItem(title1.getInfo());
 
-const title2 = Todo('Title 2', 'Description 2', '31/10/2021', 'normal', '', []);
+const title2 = Todo(
+  'Present new ideas in three weeks',
+  'Description 2',
+  '31/10/2021',
+  'normal',
+  '',
+  []
+);
 defaultProject.addItem(title2.getInfo());
 
 projects.push(defaultProject.getProjectInfo());
