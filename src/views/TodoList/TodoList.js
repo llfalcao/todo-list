@@ -3,13 +3,10 @@ const TodoList = function (project) {
   for (let i in project.items) {
     listContainer += objectToHTML(project.items[i]);
   }
-
   const content = `
-    <h1>${project.title}</h1>
     <div class="list-container">
       ${listContainer}
     </div>
-    <button type="button" id="btn-new-todo" class="btn">New Item</button>
   `;
 
   return content;
