@@ -1,6 +1,6 @@
-function Project(title) {
+function Project(title, items) {
   let _title = title;
-  let _items = [];
+  let _items = items || [];
 
   const getInfo = () => {
     return { title: _title, items: _items };

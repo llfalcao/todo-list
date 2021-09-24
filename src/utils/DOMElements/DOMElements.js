@@ -2,6 +2,7 @@ const DOMElements = (() => {
   const projects = () => document.querySelector('#projects');
   const firstProject = () => document.querySelector('.project-item');
   const todoList = () => document.querySelector('#todo');
+  const listContainer = () => document.querySelector('.list-container');
   const newTodoBtn = () => document.querySelector('#btn-new-todo');
   const form = () => document.querySelector('.form');
   const formRadio = () => document.querySelector('input[type=radio]:checked');
@@ -31,6 +32,7 @@ const DOMElements = (() => {
     formRadio,
     formSubmitBtn,
     getFormInput,
+    listContainer,
     newTodoBtn,
     projects,
     todoList,
