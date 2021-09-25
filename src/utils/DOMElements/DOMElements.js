@@ -1,15 +1,26 @@
 const DOMElements = (() => {
+  const content = () => document.querySelector('#content');
   const projects = () => document.querySelector('#projects');
+  const projectList = () => document.querySelector('.projects--list');
   const firstProject = () => document.querySelector('.project-item');
+  const latestProject = () => {
+    const nodes = document.querySelectorAll('.project-item');
+    const last = nodes[nodes.length - 1];
+    if (last !== null) {
+      return last;
+    }
+  };
+  const currentProject = () => document.querySelector('.project-item--active');
+  const newProjectBtn = () => document.querySelector('#btn-new-project');
+  const newProjectInput = () => document.querySelector('#new-project-input');
   const todoList = () => document.querySelector('#todo');
+  const h1 = () => document.querySelector('h1');
   const listContainer = () => document.querySelector('.list-container');
   const newTodoBtn = () => document.querySelector('#btn-new-todo');
   const overlay = () => document.querySelector('.overlay');
   const form = () => document.querySelector('.form');
   const formRadio = () => document.querySelector('input[type=radio]:checked');
   const formSubmitBtn = () => document.querySelector('#btn-submit-form');
-  const h1 = () => document.querySelector('h1');
-  const currentProject = () => document.querySelector('.project-list--active');
 
   const getFormInput = () => {
     let checklist = [];
@@ -30,6 +41,7 @@ const DOMElements = (() => {
   };
 
   return {
+    content,
     currentProject,
     firstProject,
     form,
@@ -37,9 +49,13 @@ const DOMElements = (() => {
     formSubmitBtn,
     getFormInput,
     h1,
+    latestProject,
     listContainer,
+    newProjectBtn,
+    newProjectInput,
     newTodoBtn,
     overlay,
+    projectList,
     projects,
     todoList,
   };

@@ -2,10 +2,16 @@
   flex-basis: 300px;
   box-shadow: 2px 0 5px #080808;
 
+  & .projects--header {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 1rem 2.5rem 1rem;
+  }
+
   & h2 {
     font-size: 1.5rem;
     font-weight: 400;
-    margin: 1rem 0rem 2.5rem 1rem;
+    // margin: 1rem 0rem 2.5rem 1rem;
   }
 
   & .project-item {
@@ -14,13 +20,32 @@
     color: $gray;
     transition: $fast-transition;
     font-family: $font-system;
+    z-index: 1000;
 
     &:hover {
       color: $light;
     }
   }
 
-  & .project-list--active {
+  & .project-item--active {
     background-color: $darkgray;
+  }
+
+  & #new-project-input {
+    width: 100%;
+    display: block;
+    padding: 0.8rem 1rem;
+    font-family: $font-system;
+    // background-color: $gray;
+    animation: slide-down $fast-transition;
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: unset;
   }
 }

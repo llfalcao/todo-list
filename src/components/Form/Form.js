@@ -57,7 +57,9 @@ const Form = function () {
         <p>Checklist</p>
         <div class="form-item checklist">
           <input type="text" name="checklist" />
-          <button id="btn-new-checklist-item" type="button" class="btn" >+</button>
+          <button id="btn-new-checklist-item" type="button" class="btn">
+            +
+          </button>
         </div>
 
         <div class="form-item">

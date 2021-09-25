@@ -1,10 +1,11 @@
 import './styles/app.scss';
 import DOMElements from './utils/DOMElements';
-import Header from './components/Header';
 import Project from './models/Project';
 import Todo from './models/Todo';
-import TodoList from './views/TodoList';
+import Header from './components/Header';
+import ProjectSection from './sections/ProjectSection';
 import ProjectList from './views/ProjectList';
+import TodoList from './views/TodoList';
 import Form from './components/Form';
 
 const ListController = (function () {
@@ -12,6 +13,7 @@ const ListController = (function () {
     project.addItem(item.getInfo());
   };
 
+  // Read from local storage
   const read = () => {
     projects = JSON.parse(localStorage.getItem('projects'));
     if (projects === null) {
@@ -22,7 +24,19 @@ const ListController = (function () {
       for (let i in projects) {
         projects[i] = Project(projects[i].title, projects[i].items);
       }
+      DOMElements.projectList().remove();
+      DOMElements.projects().insertAdjacentHTML(
+        'beforeend',
+        `<section class="projects--list"></section>`
+      );
     }
+
+    DOMElements.projectList().insertAdjacentHTML(
+      'beforeend',
+      ProjectList(projects)
+    );
+    DOMElements.firstProject().classList.add('project-item--active');
+
     if (DOMElements.listContainer() !== null) {
       DOMElements.listContainer().remove();
     }
@@ -44,18 +58,15 @@ const ListController = (function () {
 })();
 
 let projects = [];
-ListController.read();
-ListController.save();
 
+DOMElements.content().insertAdjacentHTML('afterbegin', ProjectSection());
+ListController.read();
 DOMElements.todoList().insertAdjacentHTML('afterbegin', Header());
-DOMElements.projects().insertAdjacentHTML('afterbegin', ProjectList(projects));
-DOMElements.firstProject().classList.add('project-list--active');
 DOMElements.h1().innerText = DOMElements.currentProject().innerText;
 
-// Handle form input and create a new todo
+// Add a new Todo to the list
 function handleSubmit() {
-  DOMElements.formSubmitBtn().addEventListener('click', (event) => {
-    event.preventDefault();
+  DOMElements.formSubmitBtn().addEventListener('click', () => {
     const input = DOMElements.getFormInput();
     const newItem = Todo(
       input.title,
@@ -74,12 +85,42 @@ function handleSubmit() {
   });
 }
 
-// Display form to add new items
-DOMElements.newTodoBtn().addEventListener(
-  'click',
-  () => {
-    DOMElements.todoList().insertAdjacentHTML('beforeend', Form());
-    handleSubmit();
-  },
-  false
-);
+DOMElements.newTodoBtn().addEventListener('click', () => {
+  DOMElements.todoList().insertAdjacentHTML('beforeend', Form());
+  handleSubmit();
+});
+
+// Create a new project
+function handleKeyboard() {
+  const input = DOMElements.newProjectInput();
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      let newProject = Project(input.value);
+      projects.push(newProject);
+      DOMElements.newProjectInput().remove();
+      ListController.save();
+      ListController.read();
+      DOMElements.firstProject().classList.remove('project-item--active');
+      DOMElements.latestProject().classList.add('project-item--active');
+    }
+    if (event.key === 'Escape') {
+      DOMElements.newProjectInput().remove();
+    }
+  });
+}
+
+DOMElements.newProjectBtn().addEventListener('click', () => {
+  if (DOMElements.newProjectInput()) {
+    DOMElements.newProjectInput().focus();
+    return;
+  }
+  const input = `<input
+    id="new-project-input"
+    type="text"
+    placeholder="New Project"
+  />`;
+  DOMElements.projectList().insertAdjacentHTML('beforeend', input);
+  DOMElements.newProjectInput().focus();
+
+  handleKeyboard();
+});

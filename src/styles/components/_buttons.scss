@@ -19,3 +19,25 @@
   right: 2rem;
   top: 2rem;
 }
+
+#btn-new-checklist-item {
+  height: 39px;
+  aspect-ratio: 1;
+  font-size: 2rem;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#btn-new-project {
+  height: 30px;
+  aspect-ratio: 1;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 2rem;
+  line-height: 28px;
+  border: 0;
+}

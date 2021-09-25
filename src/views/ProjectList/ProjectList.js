@@ -7,7 +7,6 @@ const ProjectList = function (projects) {
   }
 
   const content = `
-    <h2>Projects</h2>
     ${projectList}
   `;
 
