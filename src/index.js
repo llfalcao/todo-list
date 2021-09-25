@@ -83,35 +83,6 @@ function addGlobalEventListener(type, selector, callback) {
   });
 }
 
-// Display todo form
-addGlobalEventListener('click', '#btn-new-todo', () => {
-  DOMElements.todoList().insertAdjacentHTML('beforeend', Form());
-});
-
-// Add new todo
-addGlobalEventListener('click', '#btn-submit-form', (e) => {
-  const id = DOMElements.currentProject().id.substring(5);
-  const input = DOMElements.getFormInput();
-  const newItem = Todo(
-    input.title,
-    input.description,
-    input.date,
-    input.priority,
-    input.notes,
-    input.checklist
-  );
-  ListController.add(projects[id], newItem);
-  ListController.save();
-  ListController.load(DOMElements.currentProject());
-  DOMElements.form().remove();
-  DOMElements.overlay().remove();
-});
-
-// Switch between projects
-addGlobalEventListener('click', '.project-item', (event) => {
-  ListController.load(event.target);
-});
-
 // Display project form
 addGlobalEventListener('click', '#btn-new-project', () => {
   const textBox = DOMElements.newProjectInput();
@@ -141,4 +112,41 @@ addGlobalEventListener('keydown', '#new-project-input', (event) => {
   if (event.key === 'Escape') {
     DOMElements.newProjectInput().remove();
   }
+});
+
+// Display todo form
+addGlobalEventListener('click', '#btn-new-todo', () => {
+  DOMElements.todoList().insertAdjacentHTML('beforeend', Form());
+});
+
+// Add new todo
+addGlobalEventListener('click', '#btn-submit-form', () => {
+  const id = DOMElements.currentProject().id.substring(5);
+  const input = DOMElements.getFormInput();
+  const newItem = Todo(
+    input.title,
+    input.description,
+    input.date,
+    input.priority,
+    input.notes,
+    input.checklist
+  );
+  ListController.add(projects[id], newItem);
+  ListController.save();
+  ListController.load(DOMElements.currentProject());
+  DOMElements.form().remove();
+  DOMElements.overlay().remove();
+});
+
+// Switch between projects
+addGlobalEventListener('click', '.project-item', (event) => {
+  ListController.load(event.target);
+});
+
+// Add new checklist item
+addGlobalEventListener('click', '#btn-new-checklist-item', () => {
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.name = 'checklist';
+  DOMElements.formChecklist().insertAdjacentElement('afterend', input);
 });

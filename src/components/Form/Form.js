@@ -60,10 +60,12 @@ const Form = function () {
 
         <p>Checklist</p>
         <div class="form-item checklist">
-          <input type="text" name="checklist" />
+          <div class="checklist-item">  
+        <input type="text" name="checklist" />
           <button id="btn-new-checklist-item" type="button" class="btn">
             +
           </button>
+        </div>
         </div>
 
         <div class="form-item">

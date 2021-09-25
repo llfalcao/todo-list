@@ -20,6 +20,7 @@ const DOMElements = (() => {
   const overlay = () => document.querySelector('.overlay');
   const form = () => document.querySelector('.form');
   const formRadio = () => document.querySelector('input[type=radio]:checked');
+  const formChecklist = () => document.querySelector('.checklist-item');
   const formSubmitBtn = () => document.querySelector('#btn-submit-form');
 
   const getFormInput = () => {
@@ -45,6 +46,7 @@ const DOMElements = (() => {
     currentProject,
     firstProject,
     form,
+    formChecklist,
     formRadio,
     formSubmitBtn,
     getFormInput,
