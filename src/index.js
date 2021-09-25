@@ -153,38 +153,11 @@ addGlobalEventListener('click', '#btn-new-checklist-item', () => {
 // Display full todo info
 addGlobalEventListener('click', '.list-item', (event) => {
   const item = event.target.closest('.list-item');
-  // const item = event.target;
-  // console.log(event.target);
-  // console.log(item);
-
-  // const projectId = item.id.substring(5, 6);
-  // const itemId = item.id.substring(7, 8);
-  // const info = projects[projectId].getInfo().items[itemId];
   if (item.classList.contains('expanded')) {
     DOMElements.itemFullInfo(item).style.display = 'none';
     item.classList.remove('expanded');
     return;
   }
-
   DOMElements.itemFullInfo(item).style.display = 'block';
   item.classList.add('expanded');
-
-  // item.insertAdjacentHTML(
-  //   'beforeend',
-  //   `<p class="list-item--notes">${todoInfo.notes}</p>`
-  // );
-
-  // item.insertAdjacentHTML(
-  //   'beforeend',
-  //   `<ul class="list-item--checklist">
-  //     <p>Checklist</p>
-  //   </ul>`
-  // );
-
-  // for (let i = 0; i < todoInfo.checklist.length; i++) {
-  //   DOMElements.itemChecklist().insertAdjacentHTML(
-  //     'beforeend',
-  //     `<li>${todoInfo.checklist[i]}</li>`
-  //   );
-  // }
 });
