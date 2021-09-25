@@ -13,6 +13,16 @@ const ListController = (function () {
     project.addItem(item.getInfo());
   };
 
+  const load = (id, item) => {
+    DOMElements.currentProject().classList.remove('project-item--active');
+    item.classList.add('project-item--active');
+    DOMElements.listContainer().remove();
+    DOMElements.todoList().insertAdjacentHTML(
+      'beforeend',
+      TodoList(projects[id].getInfo())
+    );
+  };
+
   // Read from local storage
   const read = () => {
     projects = JSON.parse(localStorage.getItem('projects'));
@@ -54,7 +64,7 @@ const ListController = (function () {
     localStorage.setItem('projects', JSON.stringify(userData));
   };
 
-  return { add, read, save };
+  return { add, load, read, save };
 })();
 
 let projects = [];
@@ -123,4 +133,10 @@ DOMElements.newProjectBtn().addEventListener('click', () => {
   DOMElements.newProjectInput().focus();
 
   handleKeyboard();
+});
+
+// Alternate between projects
+DOMElements.projectList().addEventListener('click', (event) => {
+  const id = event.target.id.substring(5);
+  ListController.load(id, event.target);
 });
