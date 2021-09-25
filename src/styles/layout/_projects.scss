@@ -1,6 +1,8 @@
 #projects {
-  flex-basis: 300px;
-  box-shadow: 2px 0 5px #080808;
+  width: 320px;
+  box-shadow: 0 0 5px #080808;
+  background-color: $dark;
+  border-radius: 0.25rem;
 
   & .projects--header {
     display: flex;
@@ -10,8 +12,7 @@
 
   & h2 {
     font-size: 1.5rem;
-    font-weight: 400;
-    // margin: 1rem 0rem 2.5rem 1rem;
+    font-weight: 300;
   }
 
   & .project-item {
@@ -29,6 +30,18 @@
 
   & .project-item--active {
     background-color: $darkgray;
+  }
+
+  & #btn-new-project {
+    height: 30px;
+    aspect-ratio: 1;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 2rem;
+    line-height: 28px;
+    border: 0;
   }
 
   & #new-project-input {

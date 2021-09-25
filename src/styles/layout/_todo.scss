@@ -1,12 +1,9 @@
 #todo {
-  width: calc(100% - 300px);
   position: relative;
-
-  & h1 {
-    font-weight: 400;
-    font-size: 1.8rem;
-    margin: 2rem 0rem 2.5rem 2rem;
-  }
+  width: calc(100% - 320px);
+  box-shadow: 0 0 5px #080808;
+  background-color: $dark;
+  border-radius: 0.25rem;
 
   & .list-item {
     display: flex;
