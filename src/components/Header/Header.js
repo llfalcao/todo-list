@@ -1,5 +1,3 @@
-import sign from '../../plus.svg';
-
 const Header = function () {
   return `
     <header id="header">

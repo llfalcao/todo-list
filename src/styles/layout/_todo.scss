@@ -4,57 +4,57 @@
   box-shadow: 0 0 5px #080808;
   background-color: $dark;
   border-radius: 0.25rem;
+}
 
-  & .list-item {
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+
+  & div {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 0 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-
-    & div {
-      display: flex;
-      flex-direction: column;
-      margin: 1rem 0 1rem 2rem;
-    }
-
-    & span {
-      display: inline-block;
-    }
-
-    & .list-item--priority {
-      position: absolute;
-      left: 1rem;
-      top: 1.18rem;
-      width: 0.8rem;
-      aspect-ratio: 1;
-      border-radius: 100%;
-    }
-
-    & .list-item--title {
-      margin-bottom: 0.5rem;
-    }
-
-    & .list-item--description {
-      font-size: 0.8rem;
-      color: $gray;
-    }
-
-    & .list-item--date {
-      margin: 1rem 0rem 1rem 2rem;
-    }
-
-    & .low-priority {
-      background-color: $low-priority;
-    }
-
-    & .normal-priority {
-      background-color: $normal-priority;
-    }
-
-    & .high-priority {
-      background-color: $high-priority;
-    }
+    flex-direction: column;
+    margin: 1rem 0 1rem 2rem;
   }
+
+  & span {
+    display: inline-block;
+  }
+}
+
+.list-item--priority {
+  position: absolute;
+  left: 1rem;
+  top: 1.18rem;
+  width: 0.8rem;
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+
+.list-item--title {
+  margin-bottom: 0.5rem;
+}
+
+.list-item--description {
+  font-size: 0.8rem;
+  color: $gray;
+}
+
+.list-item--date {
+  margin: 1rem 0rem 1rem 2rem;
+}
+
+.low-priority {
+  background-color: $low-priority;
+}
+
+.normal-priority {
+  background-color: $normal-priority;
+}
+
+.high-priority {
+  background-color: $high-priority;
 }

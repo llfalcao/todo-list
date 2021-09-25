@@ -3,56 +3,55 @@
   box-shadow: 0 0 5px #080808;
   background-color: $dark;
   border-radius: 0.25rem;
+}
 
-  & .projects--header {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.5rem 1rem 1.5rem 1rem;
-    border-bottom: 1px solid rgba($gray, 0.5);
-  }
+.projects--header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 1rem 1.5rem 1rem;
+  border-bottom: 1px solid rgba($gray, 0.5);
 
   & h2 {
     font-size: 1.5rem;
     font-weight: 300;
   }
+}
 
-  & .project-item {
-    display: block;
-    padding: 0.8rem 1rem;
-    color: $gray;
-    transition: $fast-transition;
-    font-family: $font-system;
-    z-index: 1000;
+.project-item {
+  display: block;
+  padding: 0.8rem 1rem;
+  color: $gray;
+  transition: $fast-transition;
+  font-family: $font-system;
+  z-index: 1000;
 
-    &:hover {
-      color: $light;
-    }
+  &:hover {
+    color: $light;
   }
+}
 
-  & .project-item--active {
-    background-color: $darkgray;
-  }
+.project-item--active {
+  background-color: $darkgray;
+}
 
-  & #btn-new-project {
-    height: 30px;
-    aspect-ratio: 1;
-    font-weight: 300;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    font-size: 2rem;
-    line-height: 28px;
-    border: 0;
-  }
+#btn-new-project {
+  height: 30px;
+  aspect-ratio: 1;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 2rem;
+  line-height: 28px;
+  border: 0;
+}
 
-  & #new-project-input {
-    width: 100%;
-    display: block;
-    padding: 0.8rem 1rem;
-    font-family: $font-system;
-    // background-color: $gray;
-    animation: slide-down $fast-transition;
-  }
+#new-project-input {
+  width: 100%;
+  display: block;
+  padding: 0.8rem 1rem;
+  font-family: $font-system;
+  animation: slide-down $fast-transition;
 }
 
 @keyframes slide-down {

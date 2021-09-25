@@ -7,37 +7,37 @@
     font-size: 1.8rem;
     padding-bottom: 0.5rem;
   }
+}
 
-  & #btn-new-todo {
-    position: absolute;
-    right: 2rem;
-    top: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border: 1px solid rgba($gray, 0.2);
-    background-color: #000;
+#btn-new-todo {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba($gray, 0.2);
+  background-color: #000;
+
+  & svg {
+    fill: #ccc;
+    width: 10px;
+    transition: $fast-transition;
+    pointer-events: none;
+  }
+
+  & span {
+    font-size: 1rem;
+    padding-bottom: 0.1rem;
+    pointer-events: none;
+  }
+
+  &:hover {
+    background-color: $darkgray;
+    border: 1px solid rgba($gray, 0.3);
 
     & svg {
-      fill: #ccc;
-      width: 10px;
-      transition: $fast-transition;
-      pointer-events: none;
-    }
-
-    & span {
-      font-size: 1rem;
-      padding-bottom: 0.1rem;
-      pointer-events: none;
-    }
-
-    &:hover {
-      background-color: $darkgray;
-      border: 1px solid rgba($gray, 0.3);
-
-      & svg {
-        fill: $light;
-      }
+      fill: $light;
     }
   }
 }
