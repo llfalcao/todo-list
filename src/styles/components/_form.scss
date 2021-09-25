@@ -12,92 +12,109 @@
 
 .form {
   background-color: $dark;
-  padding: 2rem 1rem;
+  padding: 1.5rem 1rem;
   width: 90%;
-  height: 90%;
+  max-width: 650px;
+  border-radius: 0.25rem;
   overflow-y: scroll;
 
   & p {
     margin-bottom: 0.5rem;
     font-weight: 600;
   }
+}
 
-  & .form-item {
+.form-item {
+  display: block;
+
+  & label {
     display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
 
-    & label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
+  & input {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: $darkgray;
+    border: 1px solid rgba($gray, 0.2);
+    color: $light;
+    font-family: $font-system;
+    transition: $fast-transition;
 
-    & input {
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      background-color: $darkgray;
-      border: 1px solid rgba($gray, 0.2);
-      color: $light;
-      font-family: $font-system;
-      transition: $fast-transition;
-
-      &:focus {
-        border: 1px solid rgba($gray, 0.5);
-      }
-    }
-
-    & textarea {
-      min-width: 100%;
-      max-width: 100%;
-      height: 100px;
-      margin-bottom: 1rem;
-      font-family: $font-system;
-      padding: 0.5rem;
-      background-color: $darkgray;
-      border: 1px solid rgba($gray, 0.2);
-      color: $light;
-    }
-
-    & button {
-      margin-bottom: 0.5rem;
+    &:focus {
+      border: 1px solid rgba($gray, 0.5);
     }
   }
 
-  & .radio-wrapper {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  & textarea {
+    min-width: 100%;
+    max-width: 100%;
+    height: 80px;
+    margin-bottom: 1rem;
+    font-family: $font-system;
+    padding: 0.5rem;
+    background-color: $darkgray;
+    border: 1px solid rgba($gray, 0.2);
+    color: $light;
+    transition: $fast-transition;
 
-    & .radio-item {
-      display: flex;
-      align-items: center;
-      line-height: 1.8;
-
-      & input {
-        margin-top: 0.65rem;
-        margin-right: 0.5rem;
-      }
+    &:focus {
+      border: 1px solid rgba($gray, 0.5);
     }
   }
 
-  & .checklist {
-    display: flex;
+  & button {
+    margin-bottom: 0.5rem;
   }
+}
 
-  & #btn-new-checklist-item {
-    height: 39px;
-    aspect-ratio: 1;
-    font-size: 2rem;
-    font-weight: 300;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    border-radius: 0 0.25rem 0.25rem 0;
-    border: 1px solid rgba(179, 179, 179, 0.2);
-    border-left: 0;
+.form-group {
+  display: flex;
+  column-gap: 2rem;
+}
 
-    &:hover {
-      border: 1px solid rgba(179, 179, 179, 0.5);
-    }
+.left {
+  flex-grow: 1;
+}
+
+.radio-wrapper {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 1rem;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  line-height: 1.8;
+  padding-right: 2rem;
+
+  & input {
+    margin-top: 0.65rem;
+    margin-right: 0.3rem;
+  }
+}
+
+.checklist {
+  display: flex;
+}
+
+#btn-new-checklist-item {
+  height: 41px;
+  aspect-ratio: 1;
+  font-size: 2rem;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-radius: 0 0.25rem 0.25rem 0;
+  border: 1px solid rgba(179, 179, 179, 0.2);
+  border-left: 0;
+
+  &:hover {
+    border: 1px solid rgba(179, 179, 179, 0.5);
   }
 }
