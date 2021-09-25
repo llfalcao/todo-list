@@ -8,6 +8,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
+  border-radius: 0.25rem;
 }
 
 .form {
@@ -17,7 +19,9 @@
   max-width: 650px;
   max-height: 90%;
   border-radius: 0.25rem;
-  overflow-y: scroll;
+  overflow-y: auto;
+  animation: zoom-out $fast-transition;
+  z-index: 2;
 
   & p {
     margin-bottom: 0.5rem;
@@ -132,4 +136,15 @@
 
 #btn-submit-form {
   margin: 1rem 0 0;
+}
+
+@keyframes zoom-out {
+  0% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
