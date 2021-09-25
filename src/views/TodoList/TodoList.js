@@ -1,7 +1,7 @@
 const TodoList = function (project) {
   let listContainer = '';
   for (let i in project.items) {
-    listContainer += objectToHTML(project.items[i]);
+    listContainer += objectToHTML(project.id, i, project.items[i]);
   }
   const content = `
     <div class="list-container">
@@ -12,15 +12,29 @@ const TodoList = function (project) {
   return content;
 };
 
-function objectToHTML(item) {
+function objectToHTML(projectId, itemId, item) {
+  let checklist = '';
+  for (let i = 0; i < item.checklist.length; i++) {
+    checklist += `<li class="list-item__checklist--item">${item.checklist[i]}</li>`;
+  }
+
   return `
-    <div class="list-item">
-      <span class="list-item--priority ${item.priority}-priority"></span>
-      <div>
-        <span class="list-item--title">${item.title}</span>
-        <span class="list-item--description">${item.description}</span>
+    <div id="item-${projectId}-${itemId}" class="list-item">
+      <div class="basic-info">
+        <span class="list-item--priority ${item.priority}-priority"></span>
+        <div>
+          <span class="list-item--title">${item.title}</span>
+          <span class="list-item--description">${item.description}</span>
+        </div>
+        <span class="list-item--date">${item.dueDate}</span>
       </div>
-      <span class="list-item--date">${item.dueDate}</span>
+      <div class="full-info">
+        <p class="list-item--notes">${item.notes}</p>
+        <ul class="list-item--checklist">
+          <p>Checklist</p>
+          ${checklist}
+        </ul>
+      </div>
     </div>
   `;
 }

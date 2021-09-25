@@ -3,7 +3,7 @@ const DOMElements = (() => {
   const projects = () => document.querySelector('#projects');
   const projectList = () => document.querySelector('.projects--list');
   const firstProject = () => document.querySelector('.project-item');
-  const latestProject = () => {
+  const lastProject = () => {
     const nodes = document.querySelectorAll('.project-item');
     const last = nodes[nodes.length - 1];
     if (last !== null) {
@@ -16,6 +16,8 @@ const DOMElements = (() => {
   const todoList = () => document.querySelector('#todo');
   const h1 = () => document.querySelector('h1');
   const listContainer = () => document.querySelector('.list-container');
+  const itemFullInfo = (item) =>
+    document.querySelector(`#${item.id} .full-info`);
   const newTodoBtn = () => document.querySelector('#btn-new-todo');
   const overlay = () => document.querySelector('.overlay');
   const form = () => document.querySelector('.form');
@@ -51,7 +53,8 @@ const DOMElements = (() => {
     formSubmitBtn,
     getFormInput,
     h1,
-    latestProject,
+    itemFullInfo,
+    lastProject,
     listContainer,
     newProjectBtn,
     newProjectInput,

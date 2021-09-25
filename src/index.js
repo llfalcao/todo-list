@@ -14,7 +14,6 @@ const ListController = (function () {
   };
 
   const load = (item) => {
-    console.log(item);
     const id = item.id.substring(5);
     DOMElements.currentProject().classList.remove('project-item--active');
     item.classList.add('project-item--active');
@@ -30,11 +29,11 @@ const ListController = (function () {
     projects = JSON.parse(localStorage.getItem('projects'));
     if (projects === null) {
       projects = [];
-      let defaultProject = Project('Untitled');
+      let defaultProject = Project(projects.length, 'Untitled');
       projects.push(defaultProject);
     } else {
       for (let i in projects) {
-        projects[i] = Project(projects[i].title, projects[i].items);
+        projects[i] = Project(i, projects[i].title, projects[i].items);
       }
       DOMElements.projectList().remove();
       DOMElements.projects().insertAdjacentHTML(
@@ -79,7 +78,7 @@ DOMElements.h1().innerText = DOMElements.currentProject().innerText;
 // Event Listener Handler
 function addGlobalEventListener(type, selector, callback) {
   document.addEventListener(type, (e) => {
-    if (e.target.matches(selector)) callback(e);
+    if (e.target.closest(selector)) callback(e);
   });
 }
 
@@ -103,11 +102,11 @@ addGlobalEventListener('click', '#btn-new-project', () => {
 addGlobalEventListener('keydown', '#new-project-input', (event) => {
   const input = event.target;
   if (event.key === 'Enter') {
-    projects.push(Project(input.value));
+    projects.push(Project(projects.length, input.value));
     event.target.remove();
     ListController.save();
     ListController.read();
-    ListController.load(DOMElements.latestProject());
+    ListController.load(DOMElements.lastProject());
   }
   if (event.key === 'Escape') {
     DOMElements.newProjectInput().remove();
@@ -149,4 +148,43 @@ addGlobalEventListener('click', '#btn-new-checklist-item', () => {
   input.type = 'text';
   input.name = 'checklist';
   DOMElements.formChecklist().insertAdjacentElement('afterend', input);
+});
+
+// Display full todo info
+addGlobalEventListener('click', '.list-item', (event) => {
+  const item = event.target.closest('.list-item');
+  // const item = event.target;
+  // console.log(event.target);
+  // console.log(item);
+
+  // const projectId = item.id.substring(5, 6);
+  // const itemId = item.id.substring(7, 8);
+  // const info = projects[projectId].getInfo().items[itemId];
+  if (item.classList.contains('expanded')) {
+    DOMElements.itemFullInfo(item).style.display = 'none';
+    item.classList.remove('expanded');
+    return;
+  }
+
+  DOMElements.itemFullInfo(item).style.display = 'block';
+  item.classList.add('expanded');
+
+  // item.insertAdjacentHTML(
+  //   'beforeend',
+  //   `<p class="list-item--notes">${todoInfo.notes}</p>`
+  // );
+
+  // item.insertAdjacentHTML(
+  //   'beforeend',
+  //   `<ul class="list-item--checklist">
+  //     <p>Checklist</p>
+  //   </ul>`
+  // );
+
+  // for (let i = 0; i < todoInfo.checklist.length; i++) {
+  //   DOMElements.itemChecklist().insertAdjacentHTML(
+  //     'beforeend',
+  //     `<li>${todoInfo.checklist[i]}</li>`
+  //   );
+  // }
 });
