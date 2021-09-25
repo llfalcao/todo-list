@@ -13,7 +13,9 @@ const ListController = (function () {
     project.addItem(item.getInfo());
   };
 
-  const load = (id, item) => {
+  const load = (item) => {
+    console.log(item);
+    const id = item.id.substring(5);
     DOMElements.currentProject().classList.remove('project-item--active');
     item.classList.add('project-item--active');
     DOMElements.listContainer().remove();
@@ -74,54 +76,47 @@ ListController.read();
 DOMElements.todoList().insertAdjacentHTML('afterbegin', Header());
 DOMElements.h1().innerText = DOMElements.currentProject().innerText;
 
-// Add a new Todo to the list
-function handleSubmit() {
-  DOMElements.formSubmitBtn().addEventListener('click', () => {
-    const input = DOMElements.getFormInput();
-    const newItem = Todo(
-      input.title,
-      input.description,
-      input.date,
-      input.priority,
-      input.notes,
-      input.checklist
-    );
-
-    ListController.add(projects[0], newItem);
-    ListController.save();
-    ListController.read();
-    DOMElements.form().remove();
-    DOMElements.overlay().remove();
+// Event Listener Handler
+function addGlobalEventListener(type, selector, callback) {
+  document.addEventListener(type, (e) => {
+    if (e.target.matches(selector)) callback(e);
   });
 }
 
-DOMElements.newTodoBtn().addEventListener('click', () => {
+// Display todo form
+addGlobalEventListener('click', '#btn-new-todo', () => {
   DOMElements.todoList().insertAdjacentHTML('beforeend', Form());
-  handleSubmit();
 });
 
-// Create a new project
-function handleKeyboard() {
-  const input = DOMElements.newProjectInput();
-  input.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      let newProject = Project(input.value);
-      projects.push(newProject);
-      DOMElements.newProjectInput().remove();
-      ListController.save();
-      ListController.read();
-      DOMElements.firstProject().classList.remove('project-item--active');
-      DOMElements.latestProject().classList.add('project-item--active');
-    }
-    if (event.key === 'Escape') {
-      DOMElements.newProjectInput().remove();
-    }
-  });
-}
+// Add new todo
+addGlobalEventListener('click', '#btn-submit-form', (e) => {
+  const id = DOMElements.currentProject().id.substring(5);
+  const input = DOMElements.getFormInput();
+  const newItem = Todo(
+    input.title,
+    input.description,
+    input.date,
+    input.priority,
+    input.notes,
+    input.checklist
+  );
+  ListController.add(projects[id], newItem);
+  ListController.save();
+  ListController.load(DOMElements.currentProject());
+  DOMElements.form().remove();
+  DOMElements.overlay().remove();
+});
 
-DOMElements.newProjectBtn().addEventListener('click', () => {
-  if (DOMElements.newProjectInput()) {
-    DOMElements.newProjectInput().focus();
+// Switch between projects
+addGlobalEventListener('click', '.project-item', (event) => {
+  ListController.load(event.target);
+});
+
+// Display project form
+addGlobalEventListener('click', '#btn-new-project', () => {
+  const textBox = DOMElements.newProjectInput();
+  if (textBox) {
+    textBox.focus();
     return;
   }
   const input = `<input
@@ -131,12 +126,19 @@ DOMElements.newProjectBtn().addEventListener('click', () => {
   />`;
   DOMElements.projectList().insertAdjacentHTML('beforeend', input);
   DOMElements.newProjectInput().focus();
-
-  handleKeyboard();
 });
 
-// Alternate between projects
-DOMElements.projectList().addEventListener('click', (event) => {
-  const id = event.target.id.substring(5);
-  ListController.load(id, event.target);
+// Add new project
+addGlobalEventListener('keydown', '#new-project-input', (event) => {
+  const input = event.target;
+  if (event.key === 'Enter') {
+    projects.push(Project(input.value));
+    event.target.remove();
+    ListController.save();
+    ListController.read();
+    ListController.load(DOMElements.latestProject());
+  }
+  if (event.key === 'Escape') {
+    DOMElements.newProjectInput().remove();
+  }
 });
