@@ -17,17 +17,50 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 1rem 2rem 1rem 3rem;
-  position: relative;
   cursor: pointer;
 
   & div {
     display: flex;
     flex-direction: column;
+    min-width: 70%;
   }
 
   & span {
     display: inline-block;
   }
+}
+
+.list-item--title {
+  line-height: 1.3;
+  position: relative;
+}
+
+.list-item--priority {
+  position: absolute;
+  left: -2rem;
+  top: 0.3rem;
+  width: 0.8rem;
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+
+.low-priority {
+  background-color: $low-priority;
+}
+
+.normal-priority {
+  background-color: $normal-priority;
+}
+
+.high-priority {
+  background-color: $high-priority;
+}
+
+.list-item--description {
+  font-size: 0.8rem;
+  color: $gray;
+  margin: 0.5rem 0;
+  line-height: 1.3;
 }
 
 .full-info {
@@ -38,29 +71,12 @@
   overflow: hidden;
 }
 
-.list-item--priority {
-  position: absolute;
-  left: 1rem;
-  top: 1.18rem;
-  width: 0.8rem;
-  aspect-ratio: 1;
-  border-radius: 100%;
-}
-
-.list-item--title {
+.list-item__notes--title {
+  font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
-.list-item--description {
-  font-size: 0.8rem;
-  color: $gray;
-}
-
-.list-item--date {
-  margin-top: 0.5rem;
-}
-
-.list-item--notes {
+.list-item__notes--text {
   line-height: 1.3rem;
   font-size: 0.95rem;
 }
@@ -75,26 +91,25 @@
     font-weight: 600;
     margin-bottom: 0.5rem;
   }
-
-  & li {
-    margin-bottom: 0.5rem;
-  }
-
-  & li::before {
-    content: '- ';
-  }
 }
 
-.low-priority {
-  background-color: $low-priority;
+.list-item__checklist--icon {
+  min-width: 20px;
+  max-width: 20px;
+  aspect-ratio: 1;
+  background-size: contain;
+  display: block;
+  margin-right: 0.5rem;
+  fill: rgba(255, 255, 255, 0.48);
 }
 
-.normal-priority {
-  background-color: $normal-priority;
-}
-
-.high-priority {
-  background-color: $high-priority;
+.list-item__checklist--item {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-size: 0.9rem;
+  line-height: 1.3;
 }
 
 .expanded {
