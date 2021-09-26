@@ -21,13 +21,13 @@
   display: block;
   padding: 0.8rem 1rem;
   color: $gray;
-  transition: $fast-transition;
   font-family: $font-system;
   z-index: 1000;
+}
 
-  &:hover {
-    color: $light;
-  }
+.project-item:hover {
+  color: $light;
+  transition: $fast-transition;
 }
 
 .project-item--active {
@@ -45,6 +45,10 @@
   font-size: 2rem;
   line-height: 28px;
   border: 0;
+}
+
+#btn-new-project:focus {
+  outline: none;
 }
 
 #new-project-input {

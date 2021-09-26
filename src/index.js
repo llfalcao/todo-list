@@ -22,6 +22,7 @@ const ListController = (function () {
       'beforeend',
       TodoList(projects[id].getInfo())
     );
+    DOMElements.h1().innerText = DOMElements.currentProject().innerText;
   };
 
   // Read from local storage
@@ -143,21 +144,29 @@ addGlobalEventListener('click', '.project-item', (event) => {
 });
 
 // Add new checklist item
-addGlobalEventListener('click', '#btn-new-checklist-item', () => {
+addGlobalEventListener('click', '#btn-new-checklist-item', (event) => {
+  const btn = event.target;
   const input = document.createElement('input');
   input.type = 'text';
   input.name = 'checklist';
-  DOMElements.formChecklist().insertAdjacentElement('afterend', input);
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('checklist-item');
+  wrapper.appendChild(input);
+  wrapper.appendChild(btn);
+  DOMElements.formChecklist().insertAdjacentElement('beforeend', wrapper);
+  DOMElements.lastChecklistItem().focus();
 });
 
 // Display full todo info
-addGlobalEventListener('click', '.list-item', (event) => {
+addGlobalEventListener('click', '.basic-info', (event) => {
   const item = event.target.closest('.list-item');
+  const info = DOMElements.itemFullInfo(item);
   if (item.classList.contains('expanded')) {
-    DOMElements.itemFullInfo(item).style.display = 'none';
+    info.style.maxHeight = '0';
     item.classList.remove('expanded');
     return;
   }
-  DOMElements.itemFullInfo(item).style.display = 'block';
+  const infoHeight = info.scrollHeight;
+  info.style.maxHeight = infoHeight + 'px';
   item.classList.add('expanded');
 });

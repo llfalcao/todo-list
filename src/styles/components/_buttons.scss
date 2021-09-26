@@ -8,9 +8,14 @@
   color: $gray;
   transition: $fast-transition;
   border-radius: 2px;
+}
 
-  &:hover {
-    color: $light;
-    border: 1px solid $light;
-  }
+.btn:hover {
+  color: $light;
+  border: 1px solid $light;
+}
+
+.btn:focus {
+  outline: 1px solid $light;
+  outline-offset: -1px;
 }

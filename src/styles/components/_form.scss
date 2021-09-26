@@ -12,14 +12,20 @@
   border-radius: 0.25rem;
 }
 
-.form {
-  background-color: $dark;
-  padding: 1.5rem 1rem;
+.form-wrapper {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
   width: 90%;
   max-width: 650px;
   max-height: 90%;
+}
+
+.form {
+  background-color: $dark;
+  padding: 1.5rem 1rem;
   border-radius: 0.25rem;
-  overflow-y: auto;
+  max-height: 90%;
   animation: zoom-out $fast-transition;
   z-index: 2;
 
@@ -46,29 +52,28 @@
     border: 1px solid rgba($gray, 0.2);
     color: $light;
     font-family: $font-system;
-    transition: $fast-transition;
-
-    &:focus {
-      border: 1px solid rgba($gray, 0.5);
-    }
   }
 
-  & textarea {
-    min-width: 100%;
-    max-width: 100%;
-    height: 80px;
-    margin-bottom: 1rem;
-    font-family: $font-system;
-    padding: 0.5rem;
-    background-color: $darkgray;
-    border: 1px solid rgba($gray, 0.2);
-    color: $light;
-    transition: $fast-transition;
-
-    &:focus {
-      border: 1px solid rgba($gray, 0.5);
-    }
+  & input:focus {
+    border: 1px solid rgba($gray, 0.5);
   }
+}
+
+#form-item--notes {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 80px;
+  margin-bottom: 1rem;
+  font-family: $font-system;
+  padding: 0.5rem;
+  background-color: $darkgray;
+  border: 1px solid rgba($gray, 0.2);
+  color: $light;
+  line-height: 1.4;
+}
+
+#form-item--notes:focus {
+  border: 1px solid rgba($gray, 0.5);
 }
 
 .form-group {
@@ -128,10 +133,22 @@
   align-items: flex-end;
   border-radius: 0 0.25rem 0.25rem 0;
   border: 1px solid rgba(179, 179, 179, 0.2);
+  padding: 0.4rem 0 0.45rem;
   border-left: 0;
 
-  &:hover {
-    border: 1px solid rgba(179, 179, 179, 0.5);
+  & svg {
+    pointer-events: none;
+    fill: #ccc;
+    width: 15px;
+    transition: $fast-transition;
+  }
+}
+
+#btn-new-checklist-item:hover {
+  border: 1px solid rgba(179, 179, 179, 0.5);
+
+  & svg {
+    fill: $light;
   }
 }
 
