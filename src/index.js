@@ -101,9 +101,12 @@ addGlobalEventListener('click', '#btn-new-project', () => {
 
 // Add new project
 addGlobalEventListener('keydown', '#new-project-input', (event) => {
-  const input = event.target;
+  let name = event.target.value;
   if (event.key === 'Enter') {
-    projects.push(Project(projects.length, input.value));
+    if (name === '') {
+      name = 'Untitled';
+    }
+    projects.push(Project(projects.length, name));
     event.target.remove();
     ListController.save();
     ListController.read();
