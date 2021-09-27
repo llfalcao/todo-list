@@ -3,6 +3,8 @@
   box-shadow: 0 0 5px #080808;
   background-color: $dark;
   border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .projects--header {
@@ -15,6 +17,10 @@
     font-size: 1.5rem;
     font-weight: 300;
   }
+}
+
+.projects--list {
+  overflow-y: auto;
 }
 
 .project-item {

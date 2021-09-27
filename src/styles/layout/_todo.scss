@@ -4,7 +4,12 @@
   box-shadow: 0 0 5px #080808;
   background-color: $dark;
   border-radius: 0.25rem;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-container {
+  overflow-y: auto;
 }
 
 .list-item {
