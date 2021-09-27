@@ -119,11 +119,15 @@ addGlobalEventListener('keydown', '#new-project-input', (event) => {
 });
 
 // Edit Project Name
+function removeProjectEditing() {
+  DOM.headerInput().remove();
+  DOM.headerTip().style.display = 'none';
+  DOM.headerTitle().classList.remove('expanded-title');
+}
+
 addGlobalEventListener('click', '#btn-edit-project', () => {
   if (DOM.headerInput()) {
-    DOM.headerInput().remove();
-    DOM.headerTip().style.display = 'none';
-    DOM.headerTitle().classList.remove('expanded-title');
+    removeProjectEditing();
     return;
   }
   const input = `<input
@@ -146,7 +150,7 @@ addGlobalEventListener('keydown', '#project-edit-title', (event) => {
   const name = event.target.value;
   if (key === 'Enter') {
     if (name === '' || name === DOM.h1().innerText) {
-      DOM.headerInput().remove();
+      removeProjectEditing();
       return;
     }
     const id = DOM.currentProject().id.substring(5);
@@ -155,9 +159,7 @@ addGlobalEventListener('keydown', '#project-edit-title', (event) => {
     DOM.currentProject().innerText = name;
     ListController.load(DOM.currentProject());
   }
-  DOM.headerInput().remove();
-  DOM.headerTip().style.display = 'none';
-  DOM.headerTitle().classList.remove('expanded-title');
+  removeProjectEditing();
 });
 
 // Display Todo Form
