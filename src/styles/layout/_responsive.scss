@@ -22,7 +22,7 @@
   }
 
   .hidden {
-    transform: translateX(110%);
+    transform: translateX(calc(100% + 2rem));
   }
 
   #todo {
