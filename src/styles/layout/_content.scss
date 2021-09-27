@@ -5,12 +5,7 @@
   padding: 1rem;
   display: flex;
   gap: 1rem;
-  background-image: linear-gradient(
-    to bottom left,
-    #8294dd,
-    #a782dd,
-    #82bfdd,
-    #82ddc3
-  );
+  background: url('../assets/bg.jpg') no-repeat;
+  background-size: cover;
   overflow: hidden;
 }
