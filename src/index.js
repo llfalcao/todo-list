@@ -120,6 +120,7 @@ addGlobalEventListener('keydown', '#new-project-input', (event) => {
 
 // Edit Project Name
 function removeProjectEditing() {
+  DOM.h1().style.opacity = 1;
   DOM.headerInput().remove();
   DOM.headerTip().style.display = 'none';
   DOM.headerTitle().classList.remove('expanded-title');
@@ -135,6 +136,7 @@ addGlobalEventListener('click', '#btn-edit-project', () => {
     type="text"
     placeholder="${DOM.h1().innerText}"
   />`;
+  DOM.h1().style.opacity = 0;
   DOM.headerTitle().insertAdjacentHTML('beforeend', input);
   DOM.headerTip().style.display = 'block';
   DOM.headerTitle().classList.add('expanded-title');
