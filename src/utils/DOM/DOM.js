@@ -1,6 +1,7 @@
 const DOM = (() => {
   // Page Container
   const content = () => document.querySelector('#content');
+  const menu = () => document.querySelector('.menu');
 
   // Projects Section
   const projects = () => document.querySelector('#projects');
@@ -29,7 +30,7 @@ const DOM = (() => {
     document.querySelector(`#${item.id} .full-info`);
   const newTodoBtn = () => document.querySelector('#btn-new-todo');
 
-  // Form for new Todos
+  // Todo Form
   const overlay = () => document.querySelector('.overlay');
   const _form = () => document.querySelector('.form');
   const formTitleInput = () => document.querySelector('#form-item--title');
@@ -39,7 +40,7 @@ const DOM = (() => {
     document.querySelector('.checklist-item:last-child input');
   const formSubmitBtn = () => document.querySelector('#btn-submit-form');
 
-  // Form input handling
+  // Todo Form Input Handling
   const getFormInput = () => {
     let checklist = [];
     const input = Object.values(_form()).reduce((obj, field) => {
@@ -75,6 +76,7 @@ const DOM = (() => {
     lastChecklistItem,
     lastProject,
     listContainer,
+    menu,
     newProjectBtn,
     newProjectInput,
     newTodoBtn,

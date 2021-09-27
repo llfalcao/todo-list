@@ -19,6 +19,28 @@
   }
 }
 
+#btn-new-project {
+  border: 0;
+  outline: none;
+  padding: 0.2rem 0.5rem 0 0;
+
+  & svg {
+    width: 15px;
+    fill: $gray;
+    transition: $fast-transition;
+  }
+}
+
+#btn-new-project:hover {
+  & svg {
+    fill: $light;
+  }
+}
+
+#btn-new-project:focus {
+  outline: none;
+}
+
 .projects--list {
   overflow-y: auto;
 }
@@ -42,28 +64,6 @@
   color: $light;
 }
 
-#btn-new-project {
-  border: 0;
-  outline: none;
-  padding: 0.2rem 0.5rem 0 0;
-
-  & svg {
-    width: 15px;
-    fill: $gray;
-    transition: $fast-transition;
-  }
-}
-
-#btn-new-project:hover {
-  & svg {
-    fill: $light;
-  }
-}
-
-#btn-new-project:focus {
-  outline: none;
-}
-
 #new-project-input {
   width: 100%;
   display: block;
@@ -78,5 +78,26 @@
   }
   100% {
     transform: unset;
+  }
+}
+
+@media (max-width: 700px) {
+  #projects {
+    position: absolute;
+    width: calc(100% - 2rem);
+    height: calc(100% - 2rem);
+    z-index: 1;
+    background: $dark;
+    transition: $fast-transition;
+    border-radius: 0;
+  }
+
+  .projects--header {
+    padding-top: 1.3rem;
+    padding-left: 5rem;
+  }
+
+  .hidden {
+    transform: translateX(-110%);
   }
 }

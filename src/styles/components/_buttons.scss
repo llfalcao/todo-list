@@ -19,3 +19,30 @@
   outline: 1px solid $light;
   outline-offset: -1px;
 }
+
+.menu {
+  outline: none;
+  border: 1px solid rgba($gray, 0.2);
+  padding: 0.4rem 0.4rem 0.3rem;
+  background-color: $dark;
+  display: none;
+
+  & svg {
+    fill: #ccc;
+    position: none;
+  }
+}
+
+.menu:hover {
+  border: 1px solid rgba($gray, 0.2);
+}
+
+.menu:focus {
+  outline: 0;
+}
+
+@media (max-width: 700px) {
+  .menu {
+    display: block;
+  }
+}

@@ -80,6 +80,11 @@ function addGlobalEventListener(type, selector, callback) {
   });
 }
 
+// Mobile: Show/Hide Projects Section
+addGlobalEventListener('click', '.menu', (e) => {
+  DOM.projects().classList.toggle('hidden');
+});
+
 // Display project form
 addGlobalEventListener('click', '#btn-new-project', () => {
   const textBox = DOM.newProjectInput();
