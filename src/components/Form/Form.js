@@ -1,7 +1,7 @@
 const Form = function () {
   return `
     <div class="overlay">
-      <div class="form-wrapper">
+      <div class="column-reverse">
         <form class="form">
           <div class="form-item">
             <label for="form-item--title">Title</label>

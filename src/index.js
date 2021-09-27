@@ -84,18 +84,20 @@ function addGlobalEventListener(type, selector, callback) {
 }
 
 // Display project form
-addGlobalEventListener('click', '#btn-new-project', () => {
+addGlobalEventListener('click', '#btn-new-project', (event) => {
   const textBox = DOMElements.newProjectInput();
   if (textBox) {
     textBox.focus();
     return;
   }
+  const list = DOMElements.projectList();
   const input = `<input
     id="new-project-input"
     type="text"
     placeholder="New Project"
   />`;
-  DOMElements.projectList().insertAdjacentHTML('beforeend', input);
+  list.insertAdjacentHTML('beforeend', input);
+  list.scrollTo(0, list.scrollHeight);
   DOMElements.newProjectInput().focus();
 });
 
@@ -111,6 +113,8 @@ addGlobalEventListener('keydown', '#new-project-input', (event) => {
     ListController.save();
     ListController.read();
     ListController.load(DOMElements.lastProject());
+    const list = DOMElements.projectList();
+    list.scrollTo(0, list.scrollHeight);
   }
   if (event.key === 'Escape') {
     DOMElements.newProjectInput().remove();
