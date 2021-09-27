@@ -1,8 +1,13 @@
-const DOMElements = (() => {
+const DOM = (() => {
+  // Page Container
   const content = () => document.querySelector('#content');
+
+  // Projects Section
   const projects = () => document.querySelector('#projects');
   const projectList = () => document.querySelector('.projects--list');
+  const currentProject = () => document.querySelector('.project-item--active');
   const firstProject = () => document.querySelector('.project-item');
+
   const lastProject = () => {
     const nodes = document.querySelectorAll('.project-item');
     const last = nodes[nodes.length - 1];
@@ -10,23 +15,29 @@ const DOMElements = (() => {
       return last;
     }
   };
-  const currentProject = () => document.querySelector('.project-item--active');
+
   const newProjectBtn = () => document.querySelector('#btn-new-project');
   const newProjectInput = () => document.querySelector('#new-project-input');
+
+  // Todo List Section
   const todoList = () => document.querySelector('#todo');
   const h1 = () => document.querySelector('h1');
   const listContainer = () => document.querySelector('.list-container');
   const itemFullInfo = (item) =>
     document.querySelector(`#${item.id} .full-info`);
   const newTodoBtn = () => document.querySelector('#btn-new-todo');
+
+  // Form for new Todos
   const overlay = () => document.querySelector('.overlay');
   const form = () => document.querySelector('.form');
+  const formTitleInput = () => document.querySelector('#form-item--title');
   const formRadio = () => document.querySelector('input[type=radio]:checked');
   const formChecklist = () => document.querySelector('.checklist');
   const lastChecklistItem = () =>
     document.querySelector('.checklist-item:last-child input');
   const formSubmitBtn = () => document.querySelector('#btn-submit-form');
 
+  // Form input handling
   const getFormInput = () => {
     let checklist = [];
     const input = Object.values(form()).reduce((obj, field) => {
@@ -53,11 +64,12 @@ const DOMElements = (() => {
     formChecklist,
     formRadio,
     formSubmitBtn,
+    formTitleInput,
     getFormInput,
     h1,
     itemFullInfo,
-    lastProject,
     lastChecklistItem,
+    lastProject,
     listContainer,
     newProjectBtn,
     newProjectInput,
@@ -69,4 +81,4 @@ const DOMElements = (() => {
   };
 })();
 
-export default DOMElements;
+export default DOM;

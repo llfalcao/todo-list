@@ -10,15 +10,17 @@
   align-items: center;
   z-index: 1;
   border-radius: 0.25rem;
+  animation: fade-in $fast-transition;
 }
 
-.column-reverse {
+.form-wrapper {
   overflow-y: auto;
   display: flex;
   flex-direction: column-reverse;
   width: 90%;
   max-width: 650px;
   max-height: 90%;
+  animation: zoom-out $fast-transition;
 }
 
 .form {
@@ -26,12 +28,29 @@
   padding: 1.5rem 1rem;
   border-radius: 0.25rem;
   max-height: 90%;
-  animation: zoom-out $fast-transition;
   z-index: 2;
+  position: relative;
 
   & p {
     margin-bottom: 0.5rem;
     font-weight: 600;
+  }
+}
+
+#btn-close-form {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: transparent;
+  padding: 1rem 1rem 0.25rem 1rem;
+  border: 0;
+  outline: none;
+
+  & svg {
+    fill: $light;
+    width: 15px;
+    height: 15px;
+    pointer-events: none;
   }
 }
 
@@ -164,5 +183,14 @@
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

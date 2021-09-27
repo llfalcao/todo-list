@@ -1,10 +1,10 @@
 import './styles/app.scss';
-import DOMElements from './utils/DOMElements';
+import DOM from './utils/DOM';
 import Project from './models/Project';
 import Todo from './models/Todo';
-import Header from './components/Header';
 import ProjectSection from './sections/ProjectSection';
 import ProjectList from './views/ProjectList';
+import Header from './components/Header';
 import TodoList from './views/TodoList';
 import Form from './components/Form';
 
@@ -15,14 +15,14 @@ const ListController = (function () {
 
   const load = (item) => {
     const id = item.id.substring(5);
-    DOMElements.currentProject().classList.remove('project-item--active');
+    DOM.currentProject().classList.remove('project-item--active');
     item.classList.add('project-item--active');
-    DOMElements.listContainer().remove();
-    DOMElements.todoList().insertAdjacentHTML(
+    DOM.listContainer().remove();
+    DOM.todoList().insertAdjacentHTML(
       'beforeend',
       TodoList(projects[id].getInfo())
     );
-    DOMElements.h1().innerText = DOMElements.currentProject().innerText;
+    DOM.h1().innerText = DOM.currentProject().innerText;
   };
 
   // Read from local storage
@@ -36,23 +36,20 @@ const ListController = (function () {
       for (let i in projects) {
         projects[i] = Project(i, projects[i].title, projects[i].items);
       }
-      DOMElements.projectList().remove();
-      DOMElements.projects().insertAdjacentHTML(
+      DOM.projectList().remove();
+      DOM.projects().insertAdjacentHTML(
         'beforeend',
         `<section class="projects--list"></section>`
       );
     }
 
-    DOMElements.projectList().insertAdjacentHTML(
-      'beforeend',
-      ProjectList(projects)
-    );
-    DOMElements.firstProject().classList.add('project-item--active');
+    DOM.projectList().insertAdjacentHTML('beforeend', ProjectList(projects));
+    DOM.firstProject().classList.add('project-item--active');
 
-    if (DOMElements.listContainer() !== null) {
-      DOMElements.listContainer().remove();
+    if (DOM.listContainer() !== null) {
+      DOM.listContainer().remove();
     }
-    DOMElements.todoList().insertAdjacentHTML(
+    DOM.todoList().insertAdjacentHTML(
       'beforeend',
       TodoList(projects[0].getInfo())
     );
@@ -71,10 +68,10 @@ const ListController = (function () {
 
 let projects = [];
 
-DOMElements.content().insertAdjacentHTML('afterbegin', ProjectSection());
+DOM.content().insertAdjacentHTML('afterbegin', ProjectSection());
 ListController.read();
-DOMElements.todoList().insertAdjacentHTML('afterbegin', Header());
-DOMElements.h1().innerText = DOMElements.currentProject().innerText;
+DOM.todoList().insertAdjacentHTML('afterbegin', Header());
+DOM.h1().innerText = DOM.currentProject().innerText;
 
 // Event Listener Handler
 function addGlobalEventListener(type, selector, callback) {
@@ -84,13 +81,13 @@ function addGlobalEventListener(type, selector, callback) {
 }
 
 // Display project form
-addGlobalEventListener('click', '#btn-new-project', (event) => {
-  const textBox = DOMElements.newProjectInput();
+addGlobalEventListener('click', '#btn-new-project', () => {
+  const textBox = DOM.newProjectInput();
   if (textBox) {
     textBox.focus();
     return;
   }
-  const list = DOMElements.projectList();
+  const list = DOM.projectList();
   const input = `<input
     id="new-project-input"
     type="text"
@@ -98,7 +95,7 @@ addGlobalEventListener('click', '#btn-new-project', (event) => {
   />`;
   list.insertAdjacentHTML('beforeend', input);
   list.scrollTo(0, list.scrollHeight);
-  DOMElements.newProjectInput().focus();
+  DOM.newProjectInput().focus();
 });
 
 // Add new project
@@ -112,24 +109,30 @@ addGlobalEventListener('keydown', '#new-project-input', (event) => {
     event.target.remove();
     ListController.save();
     ListController.read();
-    ListController.load(DOMElements.lastProject());
-    const list = DOMElements.projectList();
+    ListController.load(DOM.lastProject());
+    const list = DOM.projectList();
     list.scrollTo(0, list.scrollHeight);
   }
   if (event.key === 'Escape') {
-    DOMElements.newProjectInput().remove();
+    DOM.newProjectInput().remove();
   }
 });
 
-// Display todo form
+// Display Todo Form
 addGlobalEventListener('click', '#btn-new-todo', () => {
-  DOMElements.todoList().insertAdjacentHTML('beforeend', Form());
+  DOM.todoList().insertAdjacentHTML('beforeend', Form());
+  DOM.formTitleInput().focus();
 });
 
-// Add new todo
-addGlobalEventListener('click', '#btn-submit-form', () => {
-  const id = DOMElements.currentProject().id.substring(5);
-  const input = DOMElements.getFormInput();
+// Close Todo Form
+addGlobalEventListener('click', '#btn-close-form', () => {
+  DOM.overlay().remove();
+});
+
+// Submit Todo Form
+addGlobalEventListener('submit', '.form-wrapper', () => {
+  const id = DOM.currentProject().id.substring(5);
+  const input = DOM.getFormInput();
   const newItem = Todo(
     input.title,
     input.description,
@@ -140,9 +143,8 @@ addGlobalEventListener('click', '#btn-submit-form', () => {
   );
   ListController.add(projects[id], newItem);
   ListController.save();
-  ListController.load(DOMElements.currentProject());
-  DOMElements.form().remove();
-  DOMElements.overlay().remove();
+  ListController.load(DOM.currentProject());
+  DOM.overlay().remove();
 });
 
 // Switch between projects
@@ -152,22 +154,22 @@ addGlobalEventListener('click', '.project-item', (event) => {
 
 // Add new checklist item
 addGlobalEventListener('click', '#btn-new-checklist-item', (event) => {
-  const btn = event.target;
   const input = document.createElement('input');
   input.type = 'text';
   input.name = 'checklist';
   const wrapper = document.createElement('div');
   wrapper.classList.add('checklist-item');
   wrapper.appendChild(input);
+  const btn = event.target;
   wrapper.appendChild(btn);
-  DOMElements.formChecklist().insertAdjacentElement('beforeend', wrapper);
-  DOMElements.lastChecklistItem().focus();
+  DOM.formChecklist().insertAdjacentElement('beforeend', wrapper);
+  DOM.lastChecklistItem().focus();
 });
 
 // Display full todo info
 addGlobalEventListener('click', '.basic-info', (event) => {
   const item = event.target.closest('.list-item');
-  const info = DOMElements.itemFullInfo(item);
+  const info = DOM.itemFullInfo(item);
   if (item.classList.contains('expanded')) {
     info.style.maxHeight = '0';
     item.classList.remove('expanded');
