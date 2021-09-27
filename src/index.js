@@ -176,9 +176,12 @@ addGlobalEventListener('click', '#btn-close-form', () => {
 });
 
 // Submit Todo Form
-addGlobalEventListener('submit', '.form-wrapper', () => {
-  const id = DOM.currentProject().id.substring(5);
+addGlobalEventListener('submit', '.form-wrapper', (event) => {
+  event.preventDefault();
   const input = DOM.getFormInput();
+  if (input.title === '') {
+    return;
+  }
   const newItem = Todo(
     input.title,
     input.description,
@@ -187,6 +190,7 @@ addGlobalEventListener('submit', '.form-wrapper', () => {
     input.notes,
     input.checklist
   );
+  const id = DOM.currentProject().id.substring(5);
   ListController.add(projects[id], newItem);
   ListController.save();
   ListController.load(DOM.currentProject());
