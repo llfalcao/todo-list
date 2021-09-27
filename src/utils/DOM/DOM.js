@@ -4,6 +4,8 @@ const DOM = (() => {
 
   // Projects Section
   const projects = () => document.querySelector('#projects');
+  const newProjectBtn = () => document.querySelector('#btn-new-project');
+  const newProjectInput = () => document.querySelector('#new-project-input');
   const projectList = () => document.querySelector('.projects--list');
   const currentProject = () => document.querySelector('.project-item--active');
   const firstProject = () => document.querySelector('.project-item');
@@ -16,10 +18,10 @@ const DOM = (() => {
     }
   };
 
-  const newProjectBtn = () => document.querySelector('#btn-new-project');
-  const newProjectInput = () => document.querySelector('#new-project-input');
-
   // Todo List Section
+  const headerTitle = () => document.querySelector('.header-title');
+  const headerInput = () => document.querySelector('#project-edit-title');
+  const headerTip = () => document.querySelector('.tip');
   const todoList = () => document.querySelector('#todo');
   const h1 = () => document.querySelector('h1');
   const listContainer = () => document.querySelector('.list-container');
@@ -29,7 +31,7 @@ const DOM = (() => {
 
   // Form for new Todos
   const overlay = () => document.querySelector('.overlay');
-  const form = () => document.querySelector('.form');
+  const _form = () => document.querySelector('.form');
   const formTitleInput = () => document.querySelector('#form-item--title');
   const formRadio = () => document.querySelector('input[type=radio]:checked');
   const formChecklist = () => document.querySelector('.checklist');
@@ -40,7 +42,7 @@ const DOM = (() => {
   // Form input handling
   const getFormInput = () => {
     let checklist = [];
-    const input = Object.values(form()).reduce((obj, field) => {
+    const input = Object.values(_form()).reduce((obj, field) => {
       if (field.type === 'radio') {
         obj[field.name] = formRadio().value;
       } else if (field.name === 'checklist') {
@@ -60,13 +62,15 @@ const DOM = (() => {
     content,
     currentProject,
     firstProject,
-    form,
     formChecklist,
     formRadio,
     formSubmitBtn,
     formTitleInput,
     getFormInput,
     h1,
+    headerInput,
+    headerTip,
+    headerTitle,
     itemFullInfo,
     lastChecklistItem,
     lastProject,

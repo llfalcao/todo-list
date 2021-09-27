@@ -118,6 +118,48 @@ addGlobalEventListener('keydown', '#new-project-input', (event) => {
   }
 });
 
+// Edit Project Name
+addGlobalEventListener('click', '#btn-edit-project', () => {
+  if (DOM.headerInput()) {
+    DOM.headerInput().remove();
+    DOM.headerTip().style.display = 'none';
+    DOM.headerTitle().classList.remove('expanded-title');
+    return;
+  }
+  const input = `<input
+    id="project-edit-title"
+    type="text"
+    placeholder="${DOM.h1().innerText}"
+  />`;
+  DOM.headerTitle().insertAdjacentHTML('beforeend', input);
+  DOM.headerTip().style.display = 'block';
+  DOM.headerTitle().classList.add('expanded-title');
+  DOM.headerInput().focus();
+});
+
+// Save New Project Name
+addGlobalEventListener('keydown', '#project-edit-title', (event) => {
+  const key = event.key;
+  if (key !== 'Enter' && key !== 'Escape') {
+    return;
+  }
+  const name = event.target.value;
+  if (key === 'Enter') {
+    if (name === '' || name === DOM.h1().innerText) {
+      DOM.headerInput().remove();
+      return;
+    }
+    const id = DOM.currentProject().id.substring(5);
+    projects[id].setTitle(name);
+    ListController.save();
+    DOM.currentProject().innerText = name;
+    ListController.load(DOM.currentProject());
+  }
+  DOM.headerInput().remove();
+  DOM.headerTip().style.display = 'none';
+  DOM.headerTitle().classList.remove('expanded-title');
+});
+
 // Display Todo Form
 addGlobalEventListener('click', '#btn-new-todo', () => {
   DOM.todoList().insertAdjacentHTML('beforeend', Form());

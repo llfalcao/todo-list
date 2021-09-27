@@ -1,6 +1,6 @@
 function Project(id, title, items) {
   const _id = parseInt(id);
-  const _title = title;
+  let _title = title;
   const _items = items || [];
 
   const getInfo = () => {
@@ -8,8 +8,9 @@ function Project(id, title, items) {
   };
   const getItems = () => _items;
   const addItem = (item) => _items.push(item);
+  const setTitle = (title) => (_title = title);
 
-  return { getInfo, getItems, addItem };
+  return { getInfo, setTitle, getItems, addItem };
 }
 
 export default Project;

@@ -1,11 +1,53 @@
 #header {
   padding: 2rem 2rem;
   border-bottom: 1px solid rgba($gray, 0.5);
+}
 
-  & h1 {
-    font-weight: 400;
-    font-size: 1.8rem;
-    padding-bottom: 0.5rem;
+.header-title {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  width: max-content;
+  max-width: 60%;
+  transition: width 0.5s ease-in-out;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 1.8rem;
+  padding-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.tip {
+  position: absolute;
+  left: 0;
+  bottom: -0.8rem;
+  font-size: 0.8rem;
+  display: none;
+  color: $gray;
+}
+
+#btn-edit-project {
+  border: 0;
+  outline: none;
+  position: absolute;
+  right: -3rem;
+
+  & svg {
+    width: 15px;
+    fill: $gray;
+    padding-bottom: 0.2rem;
+    transition: $fast-transition;
+  }
+}
+
+#btn-edit-project:hover {
+  border: 0;
+
+  & svg {
+    fill: $light;
+    pointer-events: none;
   }
 }
 
@@ -38,4 +80,21 @@
       fill: $light;
     }
   }
+}
+
+#project-edit-title {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-weight: 400;
+  font-size: 1.8rem;
+  padding-bottom: 0.5rem;
+  font-family: $font-system;
+  background-color: $dark;
+  color: $light;
+}
+
+.expanded-title {
+  width: 100%;
 }

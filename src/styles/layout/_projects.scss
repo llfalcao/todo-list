@@ -29,6 +29,7 @@
   color: $gray;
   font-family: $font-system;
   z-index: 1000;
+  word-wrap: break-word;
 }
 
 .project-item:hover {
